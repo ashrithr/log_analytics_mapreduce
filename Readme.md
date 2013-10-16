@@ -9,6 +9,7 @@ Classes Description: (common package: `com.cloudwick.mapreduce.loganalytics`)
 | *hitsperhour.DriverHitsPerHour* | Aggregates the number of hits received per hour |
 | *msgsizehits.DriverMsgSizeVsHits* | Analyzes the data to find the relationship between the size of the web pages and the number of hits received by the web page |
 | *statuscounter.DriverStatusCounter* | Counts the number of times a status code has returned by webserver |
+| *custom.Driver* | Illustrates the use of custom FileFormat, RecordReader, Partitioner, WritableComparable |
 
 
 To build jar:
