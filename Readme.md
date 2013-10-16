@@ -20,5 +20,5 @@ mvn package
 To run a specific class (ex: logsizeaggregator.DriverLogSizeAggregator):
 
 ```
-hadoop jar loganalytics-1.0*.jar com.cloudwick.mapreduce.logsizeaggregator.DriverLogSizeAggregator [input_path] [output_path]
+hadoop jar loganalytics-1.0*.jar com.cloudwick.mapreduce.loganalytics.logsizeaggregator.DriverLogSizeAggregator [input_path] [output_path]
 ```
