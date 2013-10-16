@@ -10,8 +10,6 @@ import java.io.IOException;
 
 /**
  * custom hadoop file format for HTTP log files, provides a generic splitting mechanism for HDFS file
- *
- * @author ashrith
  */
 public class HTTPLogInputFormat extends FileInputFormat<LongWritable, LogWritable> {
 

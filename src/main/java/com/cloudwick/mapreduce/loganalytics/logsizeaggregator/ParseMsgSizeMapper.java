@@ -10,8 +10,6 @@ import java.util.regex.Pattern;
 
 /**
  * parses the line using regex and emits the file size against the 'msgSize'
- *
- * @author ashrith
  */
 public class ParseMsgSizeMapper extends Mapper<Object, Text, Text, IntWritable> {
 

@@ -15,8 +15,6 @@ import java.util.Arrays;
 
 /**
  * Illustrates use of custom input file format, record reader, partitioner, writable comparable
- *
- * @author ashrith
  */
 public class Driver extends Configured implements Tool {
   @Override

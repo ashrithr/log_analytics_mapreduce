@@ -8,8 +8,6 @@ import java.io.IOException;
 
 /**
  * Aggregates the ip count who tried to access pages that were not present (using statusCode 404)
- *
- * @author ashrith
  */
 public class CustomReducer extends Reducer<Text,IntWritable,Text,IntWritable> {
   private IntWritable result = new IntWritable();

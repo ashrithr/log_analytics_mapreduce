@@ -8,8 +8,6 @@ import java.io.IOException;
 
 /**
  * Aggregates the number of times a url has encountered
- *
- * @author ashrith
  */
 public class AggregateURLReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
   private IntWritable result = new IntWritable();

@@ -15,8 +15,6 @@ import java.util.regex.Pattern;
 
 /**
  * calculates the hour of the day for a log event
- *
- * @author ashrith
  */
 public class ParseHourMapper extends Mapper<Object, Text, IntWritable, IntWritable> {
 

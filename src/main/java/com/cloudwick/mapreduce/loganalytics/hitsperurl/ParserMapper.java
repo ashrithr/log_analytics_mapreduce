@@ -10,8 +10,6 @@ import java.util.regex.Pattern;
 
 /**
  * parses the line using regex and emits the url against 1
- *
- * @author ashrith
  */
 public class ParserMapper extends Mapper<Object, Text, Text, IntWritable> {
 

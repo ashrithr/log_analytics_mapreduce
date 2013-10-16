@@ -14,8 +14,6 @@ import java.util.Arrays;
 
 /**
  * DriverHitsPerHour class for Hits Per Hour analysis
- *
- * @author ashrith
  */
 public class DriverHitsPerHour extends Configured implements Tool {
 

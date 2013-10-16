@@ -8,8 +8,6 @@ import java.util.StringTokenizer;
 
 /**
  * custom partitioner to partition HTTP log events based on IP Address
- *
- * @author ashrith
  */
 public class IPPartitioner extends Partitioner<Text, IntWritable> {
 

@@ -15,8 +15,6 @@ import java.util.Arrays;
 
 /**
  * Aggregates the web log messages size
- *
- * @author ashrith
  */
 public class DriverLogSizeAggregator extends Configured implements Tool {
   @Override

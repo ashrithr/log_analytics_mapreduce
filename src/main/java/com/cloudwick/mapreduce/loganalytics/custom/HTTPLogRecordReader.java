@@ -12,8 +12,6 @@ import java.util.regex.Pattern;
 
 /**
  * custom record reader for HTTP log events
- *
- * @author ashrith
  */
 public class HTTPLogRecordReader extends RecordReader<LongWritable, LogWritable> {
   LineRecordReader lineReader;

@@ -15,8 +15,6 @@ import java.util.Arrays;
 
 /**
  * Description goes here
- *
- * @author ashrith
  */
 public class DriverHitsPerUrl extends Configured implements Tool {
   @Override

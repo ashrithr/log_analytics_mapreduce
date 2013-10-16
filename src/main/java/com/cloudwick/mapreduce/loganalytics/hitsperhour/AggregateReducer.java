@@ -7,8 +7,6 @@ import java.io.IOException;
 
 /**
  * Aggregates the occurrences per hour
- *
- * @author ashrith
  */
 public class AggregateReducer extends Reducer<IntWritable, IntWritable, IntWritable, IntWritable> {
   public void reduce(IntWritable key, Iterable<IntWritable> values, Context context) throws IOException,

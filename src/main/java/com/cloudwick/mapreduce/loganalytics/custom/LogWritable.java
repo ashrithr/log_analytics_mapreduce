@@ -10,8 +10,6 @@ import java.io.IOException;
 
 /**
  * custom hadoop key format for http log events
- *
- * @author ashrith
  */
 public class LogWritable implements WritableComparable<LogWritable> {
 

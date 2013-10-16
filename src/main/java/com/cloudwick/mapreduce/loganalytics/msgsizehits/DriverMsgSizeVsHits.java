@@ -15,8 +15,6 @@ import java.util.Arrays;
 /**
  * Analyzes the data to find the relationship between the size of the web pages and the number of hits received by the
  * web page.
- *
- * @author ashrith
  */
 public class DriverMsgSizeVsHits extends Configured implements Tool {
   @Override

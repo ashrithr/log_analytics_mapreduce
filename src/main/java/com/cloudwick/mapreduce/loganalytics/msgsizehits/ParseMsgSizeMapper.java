@@ -10,8 +10,6 @@ import java.util.regex.Pattern;
 
 /**
  * Mapper calculates and emits the message size (rounded to 1024 bytes)
- *
- * @author ashrith
  */
 public class ParseMsgSizeMapper extends Mapper<Object, Text, IntWritable, IntWritable> {
 

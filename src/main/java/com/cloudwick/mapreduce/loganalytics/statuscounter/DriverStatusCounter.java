@@ -14,8 +14,6 @@ import java.util.Arrays;
 
 /**
  * Description goes here
- *
- * @author ashrith
  */
 public class DriverStatusCounter extends Configured implements Tool {
   @Override

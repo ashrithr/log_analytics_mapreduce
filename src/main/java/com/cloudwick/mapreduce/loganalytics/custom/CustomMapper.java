@@ -10,8 +10,6 @@ import java.util.regex.Pattern;
 
 /**
  * mapper using custom LogWritable data type, emits ip if statusCode is 404
- *
- * @author ashrith
  */
 public class CustomMapper extends Mapper<Object, LogWritable, Text, IntWritable> {
 

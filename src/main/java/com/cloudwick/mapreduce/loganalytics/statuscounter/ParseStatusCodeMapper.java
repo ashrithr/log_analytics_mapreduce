@@ -10,8 +10,6 @@ import java.util.regex.Pattern;
 
 /**
  * parses the line using regex and emits status code of the request
- *
- * @author ashrith
  */
 public class ParseStatusCodeMapper extends Mapper<Object, Text, IntWritable, IntWritable> {
 

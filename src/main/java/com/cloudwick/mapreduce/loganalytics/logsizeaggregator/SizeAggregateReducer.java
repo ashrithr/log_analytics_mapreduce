@@ -9,8 +9,6 @@ import java.util.Iterator;
 
 /**
  * calculates maximum, minimum and mean file size of the file downloaded from web server
- *
- * @author ashrith
  */
 public class SizeAggregateReducer extends Reducer<Text, IntWritable, Text, IntWritable> {
   public void reduce(Text key, Iterable<IntWritable> values, Context context)
