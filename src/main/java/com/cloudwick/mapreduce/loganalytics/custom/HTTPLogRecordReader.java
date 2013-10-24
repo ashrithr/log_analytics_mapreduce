@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * custom record reader for HTTP log events
+ * custom record reader for HTTP log events, using LineRecordReader as base
  */
 public class HTTPLogRecordReader extends RecordReader<LongWritable, LogWritable> {
   LineRecordReader lineReader;
@@ -38,8 +38,8 @@ public class HTTPLogRecordReader extends RecordReader<LongWritable, LogWritable>
       return false;
     }
 
-    Pattern httpLogPattern = Pattern.compile("^([\\d.]+) (\\S+) (\\S+)" +
-        " \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"(.+?)\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"$");
+    Pattern httpLogPattern = Pattern.compile("^([\\d.]+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\]" +
+        " \"([^\\s]+) (/[^\\s]*) HTTP/[^\\s]+\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"$");
 
     Matcher matcher = httpLogPattern.matcher(lineReader.getCurrentValue().toString());
     if (!matcher.matches()) {
@@ -49,15 +49,14 @@ public class HTTPLogRecordReader extends RecordReader<LongWritable, LogWritable>
 
     String userIP = matcher.group(1);
     String timestamp = matcher.group(4);
-    String request = matcher.group(5);
-
-    int status = Integer.parseInt(matcher.group(6));
-    int bytes = Integer.parseInt(matcher.group(7));
-
-    String browser = matcher.group(9);
+    String requestType = matcher.group(5);
+    String requestPage = matcher.group(6);
+    int status = Integer.parseInt(matcher.group(7));
+    int bytes = Integer.parseInt(matcher.group(8));
+    String browser = matcher.group(10);
 
     value = new LogWritable();
-    value.set(userIP, timestamp, request, browser, status, bytes);
+    value.set(userIP, timestamp, requestType, requestPage, browser, bytes, status);
     return true;
   }
 

@@ -31,13 +31,11 @@ public class Driver extends Configured implements Tool {
     Job job = new Job(getConf(), "custom log analysis");
     job.setJarByClass(Driver.class);
     job.setMapperClass(CustomMapper.class);
-    // Uncomment this to set combiner
-    // job.setCombinerClass(IntSumReducer.class);
     job.setReducerClass(CustomReducer.class);
     job.setOutputKeyClass(Text.class);
     job.setOutputValueClass(IntWritable.class);
     job.setInputFormatClass(HTTPLogInputFormat.class);
-    job.setPartitionerClass(IPPartitioner.class);
+    job.setPartitionerClass(UrlPartitioner.class);
     FileInputFormat.addInputPath(job, new Path(args[0]));
     FileOutputFormat.setOutputPath(job, new Path(args[1]));
     job.setNumReduceTasks(Integer.parseInt(args[2]));

@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * mapper using custom LogWritable data type, emits ip if statusCode is 404
+ * mapper using custom LogWritable data type, emits url if statusCode is 404
  */
 public class CustomMapper extends Mapper<Object, LogWritable, Text, IntWritable> {
 
@@ -17,7 +17,7 @@ public class CustomMapper extends Mapper<Object, LogWritable, Text, IntWritable>
 
   public void map(Object key, LogWritable value, Context context) throws IOException, InterruptedException {
     if (value.getStatus().get() == 404) {
-      context.write(value.getUserIP(), one);
+      context.write(value.getRequestPage(), one);
     }
   }
 

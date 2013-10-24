@@ -13,24 +13,26 @@ import java.io.IOException;
  */
 public class LogWritable implements WritableComparable<LogWritable> {
 
-  private Text userIP, timestamp, request, browser;
+  private Text userIP, timestamp, requestType, requestPage, browser;
   private IntWritable responseSize, status;
 
   public LogWritable() {
     this.userIP = new Text();
     this.timestamp =  new Text();
-    this.request = new Text();
+    this.requestType = new Text();
+    this.requestPage = new Text();
     this.browser = new Text();
     this.responseSize = new IntWritable();
     this.status = new IntWritable();
   }
 
-  public void set (String userIP, String timestamp, String request, String browser,
+  public void set (String userIP, String timestamp, String requestType, String requestPage, String browser,
                    int bytes, int status)
   {
     this.userIP.set(userIP);
     this.timestamp.set(timestamp);
-    this.request.set(request);
+    this.requestType.set(requestType);
+    this.requestPage.set(requestPage);
     this.browser.set(browser);
     this.responseSize.set(bytes);
     this.status.set(status);
@@ -43,7 +45,8 @@ public class LogWritable implements WritableComparable<LogWritable> {
   public void readFields(DataInput in) throws IOException {
     userIP.readFields(in);
     timestamp.readFields(in);
-    request.readFields(in);
+    requestType.readFields(in);
+    requestPage.readFields(in);
     browser.readFields(in);
     responseSize.readFields(in);
     status.readFields(in);
@@ -56,7 +59,8 @@ public class LogWritable implements WritableComparable<LogWritable> {
   public void write(DataOutput out) throws IOException {
     userIP.write(out);
     timestamp.write(out);
-    request.write(out);
+    requestType.write(out);
+    requestPage.write(out);
     browser.write(out);
     responseSize.write(out);
     status.write(out);
@@ -67,15 +71,15 @@ public class LogWritable implements WritableComparable<LogWritable> {
    */
   @Override
   public int compareTo(LogWritable o) {
-    if (userIP.compareTo(o.userIP) == 0) {
+    if (requestPage.compareTo(o.requestPage) == 0) {
       return timestamp.compareTo(o.timestamp);
     } else
-      return userIP.compareTo(o.userIP);
+      return requestPage.compareTo(o.requestPage);
   }
 
   public int hashCode()
   {
-    return userIP.hashCode();
+    return requestPage.hashCode();
   }
 
   /*
@@ -90,8 +94,12 @@ public class LogWritable implements WritableComparable<LogWritable> {
     return timestamp;
   }
 
-  public Text getRequest() {
-    return request;
+  public Text getRequestType() {
+    return requestType;
+  }
+
+  public Text getRequestPage() {
+    return requestPage;
   }
 
   public Text getBrowser() {
