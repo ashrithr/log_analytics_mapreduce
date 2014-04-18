@@ -13,7 +13,9 @@ import java.util.regex.Pattern;
  */
 public class ParserMapper extends Mapper<Object, Text, Text, IntWritable> {
 
-  public static final Pattern httplogPattern = Pattern.compile("^([\\d.]+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"([^\\s]+) (/[^\\s]*) HTTP/[^\\s]+\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"$");
+  public static final Pattern httplogPattern = Pattern.compile("^([\\d.]+) (\\S+) (\\S+) \\[(.*)\\] \"([^\\s]+)" +
+      " (/[^\\s]*) HTTP/[^\\s]+\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"$");
+
 
   public static final Pattern httpRequestPattern = Pattern.compile("^([^\\s]+) (/[^\\s]*) HTTP/[^\\s]+$");
 

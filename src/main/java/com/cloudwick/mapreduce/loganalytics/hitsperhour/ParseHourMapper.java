@@ -23,9 +23,12 @@ public class ParseHourMapper extends Mapper<Object, Text, IntWritable, IntWritab
     PROCESSED_RECORDS,
   }
 
-  public static SimpleDateFormat dateFormatter = new SimpleDateFormat("dd/MMMMM/yyyy:hh:mm:ss z");
+  // 2014-04-18T02:27:25Z
+  public static SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-ddThh:mm:ssZ");
 
-  public static final Pattern httplogPattern = Pattern.compile("^([\\d.]+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"([^\\s]+) (/[^\\s]*) HTTP/[^\\s]+\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"$");
+  public static final Pattern httplogPattern = Pattern.compile("^([\\d.]+) (\\S+) (\\S+) \\[(.*)\\] \"([^\\s]+)" +
+      " (/[^\\s]*) HTTP/[^\\s]+\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"$");
+
 
   private final static IntWritable one = new IntWritable(1);
 
