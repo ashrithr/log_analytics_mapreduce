@@ -28,7 +28,7 @@ public class ParseMsgSizeMapper extends Mapper<Object, Text, IntWritable, IntWri
     Matcher matcher = httplogPattern.matcher(value.toString());
     if (matcher.matches()) {
       context.getCounter(LOG_PROCESSOR_COUNTER.PROCESSED_RECORDS).increment(1);
-      int size = Integer.parseInt(matcher.group(7));
+      int size = Integer.parseInt(matcher.group(8));
       context.write(new IntWritable(size / 1024), one);
     } else {
       context.getCounter(LOG_PROCESSOR_COUNTER.MALFORMED_RECORDS).increment(1);

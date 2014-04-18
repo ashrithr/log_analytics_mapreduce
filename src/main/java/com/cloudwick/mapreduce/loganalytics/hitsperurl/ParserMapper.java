@@ -16,13 +16,9 @@ public class ParserMapper extends Mapper<Object, Text, Text, IntWritable> {
   public static final Pattern httplogPattern = Pattern.compile("^([\\d.]+) (\\S+) (\\S+) \\[(.*)\\] \"([^\\s]+)" +
       " (/[^\\s]*) HTTP/[^\\s]+\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"$");
 
-
-  public static final Pattern httpRequestPattern = Pattern.compile("^([^\\s]+) (/[^\\s]*) HTTP/[^\\s]+$");
-
   public static enum LOG_PROCESSOR_COUNTER {
     MALFORMED_RECORDS,
-    PROCESSED_RECORDS,
-    MALFORMED_REQUEST,
+    PROCESSED_RECORDS
   }
 
   private final static IntWritable one = new IntWritable(1);
@@ -32,15 +28,9 @@ public class ParserMapper extends Mapper<Object, Text, Text, IntWritable> {
     Matcher matcher = httplogPattern.matcher(value.toString());
     if (matcher.matches()) {
       context.getCounter(LOG_PROCESSOR_COUNTER.PROCESSED_RECORDS).increment(1);
-      String request = matcher.group(5);
-      Matcher requestMatcher = httpRequestPattern.matcher(request);
-      if (requestMatcher.matches()) {
-        String linkUrl = requestMatcher.group(2);
-        word.set(linkUrl);
-        context.write(word, one);
-      } else {
-        context.getCounter(LOG_PROCESSOR_COUNTER.MALFORMED_REQUEST).increment(1);
-      }
+      String request = matcher.group(6);
+      word.set(request);
+      context.write(word, one);
     } else {
       context.getCounter(LOG_PROCESSOR_COUNTER.MALFORMED_RECORDS).increment(1);
     }

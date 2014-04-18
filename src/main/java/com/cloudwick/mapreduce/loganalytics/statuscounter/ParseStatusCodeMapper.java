@@ -25,7 +25,7 @@ public class ParseStatusCodeMapper extends Mapper<Object, Text, IntWritable, Int
     Matcher matcher = httplogPattern.matcher(value.toString());
     if (matcher.matches()) {
       context.getCounter(LOG_PROCESSOR_COUNTER.PROCESSED_RECORDS).increment(1);
-      int responseCode = Integer.parseInt(matcher.group(6));
+      int responseCode = Integer.parseInt(matcher.group(7));
       context.write(new IntWritable(responseCode), new IntWritable(1));
     } else {
       context.getCounter(LOG_PROCESSOR_COUNTER.MALFORMED_RECORDS).increment(1);
