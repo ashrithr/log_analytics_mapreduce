@@ -38,8 +38,7 @@ public class HTTPLogRecordReader extends RecordReader<LongWritable, LogWritable>
       return false;
     }
 
-    Pattern httpLogPattern = Pattern.compile("^([\\d.]+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\]" +
-        " \"([^\\s]+) (/[^\\s]*) HTTP/[^\\s]+\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"$");
+    Pattern httpLogPattern = Pattern.compile("^([\\d.]+) (\\S+) (\\S+) \\[([\\w:/]+\\s[+\\-]\\d{4})\\] \"([^\\s]+) (/[^\\s]*) HTTP/[^\\s]+\" (\\d{3}) (\\d+) \"([^\"]+)\" \"([^\"]+)\"$");
 
     Matcher matcher = httpLogPattern.matcher(lineReader.getCurrentValue().toString());
     if (!matcher.matches()) {

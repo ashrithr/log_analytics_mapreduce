@@ -23,3 +23,11 @@ To run a specific class (ex: logsizeaggregator.DriverLogSizeAggregator):
 ```
 hadoop jar loganalytics-1.0*.jar com.cloudwick.mapreduce.loganalytics.logsizeaggregator.DriverLogSizeAggregator [input_path] [output_path]
 ```
+
+To generate synthetic data use [generater](http://github.com/cloudwicklabs/generator)
+
+**License and Authors**
+
+Authors: [Ashrith](http://github.com/ashrithr)
+
+Apache 2.0. Please see LICENSE.txt. All contents copyright (c) 2013, Ashrith.
