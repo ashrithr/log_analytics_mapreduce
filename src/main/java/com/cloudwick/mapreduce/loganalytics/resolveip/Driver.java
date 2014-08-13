@@ -19,6 +19,7 @@ import java.net.URI;
  *
  * Running:
  * 1. Add src/main/resources/GeoLite2-City.mmdb to hdfs
+ *  NOTE: driver expects the GeoLite2-City.mmdb in the root of hdfs (/)
  *
  * @author ashrith
  */
@@ -37,7 +38,7 @@ public class Driver extends Configured implements Tool {
         Job job = Job.getInstance(conf);
         job.setJobName("Log Parser");
         job.setJarByClass(getClass());
-        job.addCacheFile(new URI("hdfs://localhost:8020/" + conf.get("geoip.filename") + "#" + conf.get("geoip.filename")));
+        job.addCacheFile(new URI(conf.get("fs.defaultFS") + "/" + conf.get("geoip.filename") + "#" + conf.get("geoip.filename")));
 
         URI[] cacheFiles = job.getCacheFiles();
         if (cacheFiles != null) {
