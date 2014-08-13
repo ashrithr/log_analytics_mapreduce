@@ -43,6 +43,13 @@
         <version>0.8.0-incubating</version>
         <scope>test</scope>
       </dependency>
+
+      <!-- Maxmind api for resolving ip addresses to location -->
+      <dependency>
+        <groupId>com.maxmind.geoip2</groupId>
+        <artifactId>geoip2</artifactId>
+        <version>0.8.0</version>
+      </dependency>
     </dependencies>
 
     <build>
